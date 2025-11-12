@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, flash
 import model
 
 srv = Flask(__name__)
+srv.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @srv.route("/")
 def get_home():
@@ -10,7 +11,8 @@ def get_home():
 @srv.get("/excluir/cliente/<id>")
 def get_excluir_cliente(id):
     model.excluir_cliente(id)
-    return redirect("/cadastrar")
+    flash("Cliente Excluído")
+    return redirect("/pesquisar")
 
 @srv.get("/pesquisar")
 def get_pesquisar():

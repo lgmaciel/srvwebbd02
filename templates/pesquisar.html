@@ -12,11 +12,23 @@
 </header>
 
 <main>
+
+
 <form action="/pesquisar" method="post">
     <label>Nome:</label>    
     <input type="text" name="nome">
     <input type="submit" name="btPesquisar" value="Pesquisar">
 </form>
+
+{% with mensagens = get_flashed_messages() %}
+  {% if mensagens %}
+    
+    {% for mensagem in mensagens %}
+      <p>{{ mensagem }}</p>
+    {% endfor %}
+    
+  {% endif %}
+{% endwith %}
 
 <section>
     <table>
