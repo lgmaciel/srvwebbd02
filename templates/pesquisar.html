@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisar Clientes</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+<header>
+    <h1>Pesquisar Clientes</h1>
+</header>
+
+<main>
+<form action="/pesquisar" method="post">
+    <label>Nome:</label>    
+    <input type="text" name="nome">
+    <input type="submit" name="btPesquisar" value="Pesquisar">
+</form>
+
+<section>
+    <table>
+        <tr>
+            <th>Comando</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+        <!--parte variável-->
+        {% for id, nome, email in clientes %}
+        <tr>
+            <td><a href="/excluir/cliente/{{id}}">X</a></td>
+            <td>{{nome}}</td>
+            <td>{{email}}</td>
+
+        </tr>       
+        {% endfor %}
+        <!--fim da parte variável-->
+    </table>
+</section>
+</main>
+
+
+<footer>
+    CRUD Clientes 2025
+</footer>
+</body>
+</html>

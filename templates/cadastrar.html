@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Clientes</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+<header>
+    <h1>Cadastrar Clientes</h1>
+</header>
+
+<main>
+<form action="/cadastrar" method="post">
+    <label>Nome:</label>    
+    <input type="text" name="nome">
+    <label>Email:</label>
+    <input type="email" name="email">
+    <input type="submit" name="btCadastrar" value="Cadastrar">
+</form>
+
+<section>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+        <!--parte variável-->
+        {% for nome, email in clientes %}
+        <tr>
+            <td>{{nome}}</td>
+            <td>{{email}}</td>
+        </tr>       
+        {% endfor %}
+        <!--fim da parte variável-->
+    </table>
+</section>
+</main>
+
+
+<footer>
+    CRUD Clientes 2025
+</footer>
+</body>
+</html>
