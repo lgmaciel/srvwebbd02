@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Clientes</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+</head>
+<body>
+<header>
+    <h1>Editar Cliente</h1>
+</header>
+
+<main>
+<form action="/atualizar" method="post">
+    <input type="hidden" name="id" value="{{cliente[0]}}">
+    <label>Nome:</label>    
+    <input type="text" name="nome" value="{{cliente[1]}}">
+    <label>Email:</label>
+    <input type="email" name="email" value="{{cliente[2]}}">
+    <input type="submit" name="btCadastrar" value="Atualizar">
+</form>
+
+{% with mensagens = get_flashed_messages() %}
+  {% if mensagens %}
+    
+    {% for mensagem in mensagens %}
+      <p>{{ mensagem }}</p>
+    {% endfor %}
+    
+  {% endif %}
+{% endwith %}
+
+</main>
+
+
+<footer>
+    CRUD Clientes 2025
+</footer>
+</body>
+</html>

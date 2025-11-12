@@ -33,17 +33,24 @@
 <section>
     <table>
         <tr>
-            <th>Comando</th>
             <th>Nome</th>
             <th>Email</th>
+            <th>Ações</th>
         </tr>
         <!--parte variável-->
         {% for id, nome, email in clientes %}
-        <tr>
-            <td><a href="/excluir/cliente/{{id}}">X</a></td>
+        <style>
+            td > a {
+                text-decoration: none;
+            }
+        </style>
+        <tr>            
             <td>{{nome}}</td>
             <td>{{email}}</td>
-
+            <td>                
+                <a href="/excluir/cliente/{{id}}">💀</a>                
+                <a href="/editar/cliente/{{id}}">✍</a>
+            </td>
         </tr>       
         {% endfor %}
         <!--fim da parte variável-->

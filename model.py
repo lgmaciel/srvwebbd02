@@ -1,5 +1,28 @@
 import sqlite3
 
+def atualizar_cliente(id, nome, email):
+    with sqlite3.connect("clientes.db") as conn:
+        sql_atualizar_cliente = '''
+        UPDATE clientes
+        SET nome = ?, email = ?
+        WHERE id = ?       
+        '''
+        conn.execute(sql_atualizar_cliente, (nome, email, id))
+    
+
+def pesquisar_cliente_id(id):
+    with sqlite3.connect("clientes.db") as conn:
+        sql_pesquisar_cliente_por_id = '''
+        SELECT id, nome, email
+        FROM clientes
+        WHERE id = ?
+        '''
+        cur = conn.cursor()
+        cur.execute(sql_pesquisar_cliente_por_id, (id,))
+        umCliente = cur.fetchone()
+        return umCliente # retorna uma tupla (id, nome, email)
+        
+
 def excluir_cliente(id):
     with sqlite3.connect("clientes.db") as conn:
         sql_excluir_cliente = '''
